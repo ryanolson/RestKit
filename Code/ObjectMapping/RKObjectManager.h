@@ -373,6 +373,15 @@ typedef enum {
 - (RKObjectLoader*)deleteObject:(id<NSObject>)object mapResponseToObject:(id<NSObject>)tgtObject withMapping:(RKObjectMapping*)objectMapping delegate:(id<RKObjectLoaderDelegate>)delegate;
 
 
+//////
+
+/**
+ Send the data for a mappable object by performing an HTTP PUT. The data returned in the response will be mapped according
+ to the target object and object mapping provided.
+ */
+- (RKObjectLoader*)putObject:(id<NSObject>)object mapResponseToObject:(id<NSObject>)tgtObject withMapping:(RKObjectMapping*)objectMapping delegate:(id<RKObjectLoaderDelegate>)delegate block:(void(^)(RKObjectLoader*))block;
+
+
 /**
  These methods are provided for situations where the remote system you are working with has slightly different conventions
  than the default methods provide. They return fully initialized object loaders that are ready for dispatch, but

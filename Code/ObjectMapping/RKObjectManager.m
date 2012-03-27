@@ -368,6 +368,22 @@ static RKObjectManager* sharedManager = nil;
 	return loader;
 }
 
+#pragma mark - Object Instance Loaders for Non-nested JSON with Specified Target Response Objects with Block Configurator
+
+- (RKObjectLoader*)putObject:(id<NSObject>)object mapResponseToObject:(id<NSObject>)tgtObject withMapping:(RKObjectMapping*)objectMapping delegate:(id<RKObjectLoaderDelegate>)delegate block:(void (^)(RKObjectLoader *))block {
+	RKObjectLoader* loader = [self objectLoaderForObject:object method:RKRequestMethodPUT delegate:delegate];
+    if ([tgtObject isMemberOfClass:[objectMapping objectClass]]) {
+        loader.targetObject = tgtObject;
+    } else {
+        loader.targetObject = nil;
+    }
+    loader.objectMapping = objectMapping;
+    block(loader);
+	[loader send];
+	return loader;
+}
+
+
 #pragma mark - Reqest Cache and Queue
 
 - (RKRequestCache *)requestCache {
