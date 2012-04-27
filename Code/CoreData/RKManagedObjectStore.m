@@ -36,7 +36,6 @@ static NSString* const RKManagedObjectStoreThreadDictionaryEntityCacheKey = @"RK
 - (void)createPersistentStoreCoordinator;
 - (void)createStoreIfNecessaryUsingSeedDatabase:(NSString*)seedDatabase;
 - (NSString *)applicationDataDirectory;
-- (NSManagedObjectContext*)newManagedObjectContext;
 @end
 
 @implementation RKManagedObjectStore
