@@ -146,4 +146,8 @@ extern NSString* const RKManagedObjectStoreDidFailSaveNotification;
  */
 - (NSArray*)objectsForResourcePath:(NSString*)resourcePath;
 
+/**
+ *
+ */
+- (NSManagedObjectContext*)newManagedObjectContext;
 @end
